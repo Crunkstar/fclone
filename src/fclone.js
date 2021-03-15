@@ -51,10 +51,12 @@ function fclone(obj, refs) {
 
   let keys = Object.keys(obj);
   let l = keys.length;
-
-  while(l--) {
-    let k = keys[l];
-    copy[k] = ~refs.indexOf(obj[k]) ? '[Circular]' : fclone(obj[k], refs);
+  let i = 0;
+  if(l>0){
+    do{
+      let k = keys[i];
+      copy[k] = ~refs.indexOf(obj[k]) ? '[Circular]' : fclone(obj[k], refs);
+    } while(++i<l);
   }
 
   refs.length && refs.length--;

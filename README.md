@@ -1,5 +1,7 @@
 # FClone
 
+Original FClone reverses object key order, this repo "fixes" this behaviour
+
 Clone objects by dropping circular references
 
 [![Build Status](https://travis-ci.org/soyuka/fclone.svg?branch=master)](https://travis-ci.org/soyuka/fclone)
