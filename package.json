@@ -1,6 +1,6 @@
 {
   "name": "@crunkstar/fclone",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Clone objects by dropping circular references",
   "main": "dist/fclone",
   "scripts": {
@@ -30,5 +30,8 @@
     "gulp-uglify": "^1.5.4",
     "gulp-wrap": "^0.13.0",
     "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "objectid": "^3.2.1"
   }
 }

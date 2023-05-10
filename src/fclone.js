@@ -1,5 +1,5 @@
 'use strict';
-
+const ObjectId = require('objectid');
 // see if it looks and smells like an iterable object, and do accept length === 0
 function isArrayLike(item) {
   if (Array.isArray(item)) return true;
@@ -16,13 +16,16 @@ function fclone(obj, refs) {
   }
 
   if (typeof Buffer !== 'undefined' && Buffer.isBuffer(obj)) {
-    return new Buffer(obj);
+    return Buffer.from(obj);
   }
 
   // typed array Int32Array etc.
   if (typeof obj.subarray === 'function' && /[A-Z][A-Za-z\d]+Array/.test(Object.prototype.toString.call(obj))) {
     return obj.subarray(0);
   }
+
+  // MongoDB ObjectId
+  if(obj instanceof ObjectId.constructor) return ObjectId(obj);
 
   if (!refs) { refs = []; }
 
