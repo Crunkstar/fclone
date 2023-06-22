@@ -1,6 +1,7 @@
 'use strict'
 
 var expect = require('chai').expect
+const {ObjectId} = require('bson');
 var clone = require('../dist/fclone.js')
 
 describe('fclone', function(){
@@ -49,6 +50,13 @@ describe('fclone', function(){
 
     it('a Buffer', function(){
       var a = Buffer.from('this is a test')
+      var b = clone(a)
+      expect(a.toString()).to.equal(b.toString())
+      expect(a).to.not.equal(b)
+    })
+
+    it('an ObjectId', function(){
+      var a = new ObjectId('649405fec5388c06a0afdd3e')
       var b = clone(a)
       expect(a.toString()).to.equal(b.toString())
       expect(a).to.not.equal(b)

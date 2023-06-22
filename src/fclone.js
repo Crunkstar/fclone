@@ -1,5 +1,5 @@
 'use strict';
-const ObjectId = require('objectid');
+const {ObjectId} = require('bson');
 // see if it looks and smells like an iterable object, and do accept length === 0
 function isArrayLike(item) {
   if (Array.isArray(item)) return true;
@@ -25,7 +25,7 @@ function fclone(obj, refs) {
   }
 
   // MongoDB ObjectId
-  if(obj instanceof ObjectId.constructor) return ObjectId(obj);
+  if(obj instanceof ObjectId) return new ObjectId(obj);
 
   if (!refs) { refs = []; }
 
